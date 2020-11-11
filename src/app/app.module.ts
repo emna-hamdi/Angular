@@ -10,6 +10,8 @@ import { FormsModule } from '@angular/forms';
 import { RegisterComponent } from './register/register.component';
 import { Error404Component } from './error404/error404.component';
 import { Error500Component } from './error500/error500.component';
+import { UsersListComponent } from './users-list/users-list.component';
+import { UserAddComponent } from './user-add/user-add.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,9 @@ import { Error500Component } from './error500/error500.component';
     FooterComponent,
     RegisterComponent,
     Error404Component,
-    Error500Component
+    Error500Component,
+    UsersListComponent,
+    UserAddComponent
   ],
   imports: [
     BrowserModule,

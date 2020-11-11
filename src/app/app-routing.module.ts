@@ -4,6 +4,8 @@ import { Error404Component } from './error404/error404.component';
 import { Error500Component } from './error500/error500.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { UserAddComponent } from './user-add/user-add.component';
+import { UsersListComponent } from './users-list/users-list.component';
 
 const routes: Routes = [
   {
@@ -20,6 +22,11 @@ const routes: Routes = [
     path:'login',
     component:LoginComponent
   },
+  {
+    path:'users',
+    component:UserAddComponent
+  },
+  
     {
     path:'error500',
     component:Error500Component
