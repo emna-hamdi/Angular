@@ -8,6 +8,8 @@ import { LoginComponent } from './login/login.component';
 import { FooterComponent } from './footer/footer.component';
 import { FormsModule } from '@angular/forms';
 import { RegisterComponent } from './register/register.component';
+import { Error404Component } from './error404/error404.component';
+import { Error500Component } from './error500/error500.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +17,9 @@ import { RegisterComponent } from './register/register.component';
     NavBarComponent,
     LoginComponent,
     FooterComponent,
-    RegisterComponent
+    RegisterComponent,
+    Error404Component,
+    Error500Component
   ],
   imports: [
     BrowserModule,
