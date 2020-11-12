@@ -31,10 +31,11 @@ export class UserAddComponent implements OnInit {
   editUser(index: number)
   {
     this.showdDownButton=false;
-    var user: any =this.usersList[index];
-    this. deleteUser(index);
-    this.firstname ="";
-    this.lastname="";
+    var userEdited: any ={
+      firstname:this.firstname,
+      lastname:this.lastname
+    };
+  this.usersList.splice(index,1,userEdited);
   }
 
 
