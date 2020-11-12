@@ -12,6 +12,9 @@ import { Error404Component } from './error404/error404.component';
 import { Error500Component } from './error500/error500.component';
 import { UsersListComponent } from './users-list/users-list.component';
 import { UserAddComponent } from './user-add/user-add.component';
+import { TaskAddComponent } from './task-add/task-add.component';
+import { TaskListComponent } from './task-list/task-list.component';
+import { TaskUpdateComponent } from './task-update/task-update.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +26,10 @@ import { UserAddComponent } from './user-add/user-add.component';
     Error404Component,
     Error500Component,
     UsersListComponent,
-    UserAddComponent
+    UserAddComponent,
+    TaskAddComponent,
+    TaskListComponent,
+    TaskUpdateComponent
   ],
   imports: [
     BrowserModule,
