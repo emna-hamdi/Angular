@@ -9,7 +9,7 @@ export class UsersListComponent implements OnInit {
 
   @Input() users: Array<Object>;
   @Output() public sendData=new EventEmitter<Number>();
-  
+  @Output() public sendDataForDelete=new EventEmitter<Number>();
   constructor() { }
 
   ngOnInit(): void {
@@ -19,4 +19,9 @@ export class UsersListComponent implements OnInit {
   //  console.log(index);
     this.sendData.emit(index);
   }
+  DeleteUser(indexDelete: Number) {
+    //  console.log(index);
+      this.sendDataForDelete.emit(indexDelete);
+    }
+
 }

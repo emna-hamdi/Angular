@@ -1,13 +1,10 @@
 
-
-
  <div class="container">
   <div class="row">
     <div class="col-md-6 offset-md-3">
+
       <form>
       <h2 class="text-center">Add user</h2> 
-
- 
       <div class="form-group">
         <input type="text" class="form-control" [(ngModel)]="firstname" placeholder="Firste Name" name="firstname" required>
     
@@ -20,12 +17,12 @@
 
 
           <div class="text-center">
-              <button type="submit" class="btn-btn-primary"  (click)="addUser()">Register</button>
-              <button class="btn-btn-primary" onclick="editUser()">Edit</button>
-              <button class="btn-btn-primary" onclick="deleteUser(i)">Delete</button>
+              <button type="submit" class="btn-btn-primary" *ngIf="!showdDownButton"   (click)="addUser()">Register</button>
+              <button class="btn-btn-primary" *ngIf="showdDownButton" (click)="editUser(i)">Edit</button>
+              <button class="btn-btn-primary"  (click)="deleteUser(k)">Delete</button>
           </div>
     </form>
     </div>
   </div>
 </div>  
-<app-users-list (sendData)="onUpdate($event)" [users]="usersList" ></app-users-list>
+<app-users-list (sendData)="onUpdate($event)"  (sendDataForDelete)=" deleteUser($event)" [users]="usersList" ></app-users-list>

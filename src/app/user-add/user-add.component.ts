@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./user-add.component.css']
 })
 export class UserAddComponent implements OnInit {
+  showdDownButton:Boolean=false;
   firstname:String="";
   lastname:String="";
 
@@ -27,18 +28,26 @@ export class UserAddComponent implements OnInit {
   this.lastname="";
   }
 
-  showUser(index: number)
+  editUser(index: number)
   {
+    this.showdDownButton=false;
+    var user: any =this.usersList[index];
+    this. deleteUser(index);
+    this.firstname ="";
+    this.lastname="";
   }
 
+
   onUpdate(index:any){
+   this.showdDownButton=true;
     var user: any =this.usersList[index];
     this.firstname= user.firstname;
     this.lastname= user.lastname;
     console.log(index);
     
   }
-  deleteUser(index: number) {
+
+  deleteUser(index: any) {
     this.usersList.splice(index, 1);
   }
 
