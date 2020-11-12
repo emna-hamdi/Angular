@@ -19,7 +19,7 @@ export class UsersListComponent implements OnInit {
   //  console.log(index);
     this.sendData.emit(index);
   }
-  DeleteUser(indexDelete: Number) {
+  deleteUser(indexDelete: Number) {
     //  console.log(index);
       this.sendDataForDelete.emit(indexDelete);
     }
