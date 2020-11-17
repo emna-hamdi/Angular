@@ -3,7 +3,7 @@
     <div class="offset-2 col-8">
 
      <div class="mx-auto" style="width: 200px;">
-         <a routerLink="/tasks/add" class="btn btn-success btn-block">add</a></div>  
+         <a routerLink="/tasks/add" class="btn btn-success btn-block">add</a></div>
         <table class="table tabe-hover table-striped table-bordered">
             <thead class="table-secondary">
                 <tr>
@@ -14,12 +14,12 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>enma</td>
-                    <td>hamdi</td>
-                    <td>ijnoihhbub</td>
+                <tr *ngFor="let list of lists;;let i=index">
+                  <td>{{i+1}}</td>
+                  <td>{{list.title}}</td>
+                  <td>{{list.description}}</td>
                     <td class="text-center">
-                        <a   [routerLink]="['/tasks/update/', 1]" class="btn btn-secondary mr-2">Update</a>
+                        <a [routerLink]="['/tasks/update/', i]" class="btn btn-secondary mr-2">Update</a>
                         <a  class="btn btn-danger">Delete</a>
                     </td>
                 </tr>
