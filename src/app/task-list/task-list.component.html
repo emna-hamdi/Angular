@@ -16,8 +16,8 @@
             <tbody>
                 <tr *ngFor="let list of lists;;let i=index">
                   <td>{{i+1}}</td>
-                  <td>{{list.title}}</td>
-                  <td>{{list.description}}</td>
+                  <td>{{list.title | uppercase}}</td>
+                  <td>{{list.description| lowercase}}</td>
                     <td class="text-center">
                         <a [routerLink]="['/tasks/update/', i]" class="btn btn-secondary mr-2">Update</a>
                         <a  class="btn btn-danger"  type="submit" (click)="onDelete(i)">Delete</a>

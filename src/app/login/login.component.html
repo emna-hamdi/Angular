@@ -1,24 +1,43 @@
-<div  style="margin-bottom: 150px;"></div>
-<div class="row">
-    <div class="offset-sm-3 col-sm-6"><form>
-        <div class="form-group ">
-          <label for="emailLabel">Email address</label>
-          <input type="email" class="form-control is-valid" [(ngModel)]="email" name="email" id="emailLabel" aria-describedby="emailHelp" placeholder="Enter email">
-          <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-        </div>
-        <div class="form-group">
-          <label for="Password">Password</label>
-          <input type="password"  [(ngModel)]="password" name="password" class="form-control is-invalid" id="Password" placeholder="Password">
-        </div>
-        <div class="form-check">
-          <input type="checkbox" class="form-check-input" id="exampleCheck1">
-          <label class="form-check-label" for="exampleCheck1">Check me out</label>
-        </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
-      </form>
-    </div>
-  </div>
-  <p >{{email}}</p>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+          <h2 class="text-center">Registration Form</h2>
+
+          <div class="form-group">
+            <input type="email" class="form-control" formControlName="email" placeholder="email"
+            [ngClass]="{ 'is-invalid': submitted && loginForm.controls.email.errors, 'is-valid': submitted && !loginForm.controls.email.errors }">
+            <div class="invalid-feedback d-block">
+            <p *ngIf="submitted && loginForm.get('email').hasError('required')">
+              Le champ email est obligatoire.
+            </p>
+            <p *ngIf="submitted && loginForm.get('email').hasError('email')">
+              Le champ email n'est pas valid.
+            </p>
+          </div>
+          </div>
+
+          <div class="form-group">
+            <input type="password" class="form-control" formControlName="password" placeholder="Password"
+            [ngClass]="{ 'is-invalid': submitted && loginForm.controls.password.errors, 'is-valid': submitted && !loginForm.controls.password.errors }">
+            <div class="invalid-feedback d-block">
+            <p *ngIf="submitted && loginForm.get('password').hasError('required')">
+              Le champ mot de pass est obligatoire.
+            </p>
+            <p *ngIf="submitted && loginForm.get('password').hasError('minlength')">
+              Le champ password n'est pas vali.
+            </p></div>
+          </div>
+
+
+
+          <div class="text-center">
+            <button type="submit" class="btn btn-primary btn-block">Login</button>
+
+          </div>
+        </form>
+        <br>
 
 
 
@@ -39,7 +58,7 @@
 
 
 
-  
+
 <!-- <div class="col-md-5 justify-content-md-center">
 <form class="left">
     <div class="form-group ">
@@ -66,4 +85,4 @@
 
   <p>{{5+5}}</p>
   <img [src]="{{url}}">
-<button type="button" (click)="register">cleck here</button> --> 
+<button type="button" (click)="register">cleck here</button> -->

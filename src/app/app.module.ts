@@ -15,6 +15,8 @@ import { UserAddComponent } from './user-add/user-add.component';
 import { TaskAddComponent } from './task-add/task-add.component';
 import { TaskListComponent } from './task-list/task-list.component';
 import { TaskUpdateComponent } from './task-update/task-update.component';
+import { DashbordComponent } from './dashbord/dashbord.component';
+import { DashbaordComponent } from './dashbaord/dashbaord.component';
 
 
 @NgModule({
@@ -30,7 +32,9 @@ import { TaskUpdateComponent } from './task-update/task-update.component';
     UserAddComponent,
     TaskAddComponent,
     TaskListComponent,
-    TaskUpdateComponent
+    TaskUpdateComponent,
+    DashbordComponent,
+    DashbaordComponent
   ],
   imports: [
     BrowserModule,

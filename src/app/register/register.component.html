@@ -1,82 +1,70 @@
-
-
-<!-- 
- <div class="container">
+<div class="container">
   <div class="row">
     <div class="col-md-6 offset-md-3">
-<form #regForm="ngForm" (ngSubmit)="Registers(regForm)" novalidate>
- <h2 class="text-center">Registration Form</h2> 
+      <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+        <h2 class="text-center">Registration Form</h2>
+        <div class="form-group">
+          <input type="text" class="form-control" formControlName="firstName" placeholder="First Name"
+          [ngClass]="{ 'is-invalid': submitted && registerForm.controls.firstName.errors,'is-valid': submitted && !registerForm.controls.firstName.errors}">
+          <div class="invalid-feedback d-block">
+            <p *ngIf="submitted && registerForm.get('firstName').hasError('required')">
+              Le champ nom est obligatoire.
+            </p>
+            <p *ngIf="submitted && registerForm.get('firstName').hasError('minLength')">
+              Le champ nom doit  comporte 3 caractères au moins.
+            </p>
+          </div>
+        </div>
 
- 
- <div class="form-group">
-   <input type="text" class="form-control" placeholder="Firste Name" name="firstname" required 
-   [ngClass]="{ 'is-invalid': submitted===true && firstname.length <=4 , 'is-valid':submitted===true && firstname.length >4 }" [(ngModel)]="firstname">
-      <div *ngif="submitted" class="invalid-feedback"></div>
-  </div>
+        <div class="form-group">
+          <input type="text" class="form-control" formControlName="lastName" placeholder="Laste Name"
+          [ngClass]="{ 'is-invalid': submitted && registerForm.controls.lastName.errors,'is-valid': submitted && !registerForm.controls.lastName.errors }">
+          <div class="invalid-feedback d-block">
+          <p *ngIf="submitted && registerForm.get('lastName').hasError('required')">
+            Le champ prenom est obligatoire.
+          </p>
+          <p *ngIf="submitted && registerForm.get('lastName').hasError('minLength')">
+            Le champ prenom doit  comporte 3 caractères au moins.
+          </p></div>
+        </div>
 
-  <div class="form-group">
-    <input type="text" class="form-control" required placeholder="Last Name" name="lastname" required 
-    [ngClass]="{ 'is-invalid': submitted===true && lastname.length <=4 , 'is-valid':submitted===true && lastname.length >4 }" [(ngModel)]="lastname">
-       <div *ngif="submitted" class="invalid-feedback"></div>
-   </div>
+        <div class="form-group">
+          <input type="email" class="form-control" formControlName="email" placeholder="email"
+          [ngClass]="{ 'is-invalid': submitted && registerForm.controls.email.errors,'is-valid': submitted && !registerForm.controls.email.errors}">
+          <div class="invalid-feedback d-block">
+          <p *ngIf="submitted && registerForm.get('email').hasError('required')">
+            Le champ pays est obligatoire.
+          </p></div>
+        </div>
 
-   <div class="form-group">
-    <input  type="email"  class="form-control" required placeholder="Email"
-      [ngClass]="{ 'is-invalid': submitted && email.indexOf('@') < 1,'is-valid':submitted && email.indexOf('@') >1}" >
-     
-       <div *ngif="submitted" class="invalid-feedback"></div>
-   </div>
+        <div class="form-group">
+          <input type="password" class="form-control" formControlName="password" placeholder="Password"
+          [ngClass]="{ 'is-invalid': submitted && registerForm.controls.password.errors,'is-valid': submitted && !registerForm.controls.password.errors }">
+          <div class="invalid-feedback d-block">
+          <p *ngIf="submitted && registerForm.get('password').hasError('required')">
+            Le champ mot de pass est obligatoire.
+          </p>
+          <p *ngIf="submitted && registerForm.get('password').hasError('minLength')">
+            Le champ mot de passe doit  comporte 6 caractères au moins.
+          </p></div>
+        </div>
 
-<div class="form-group">
-  <input type="text" class="form-control" [ngClass]="{ 'is-invalid': submitted===false && phone.length<=7, 'is-valid': submitted===true && phone.length>8}" 
-   required pattern="^[0-9]+$"  placeholder="Phone" [(ngModel)]="phone">
-  <div *ngif="submitted" class="invalid-feedback"></div>
-</div>
-<div class="form-group">
-  <input type="password" class="form-control" [ngClass]="{ 'is-invalid': submitted===false && password.length<=7, 'is-valid': submitted===true  && password.length>=8 }" 
-    required   placeholder="Password" [(ngModel)]="password">
-  <div *ngif="submitted" class="invalid-feedback"></div>
-</div>
-<div class="text-center">
-  <button type="submit" class="btn-btn-primary">Register</button>
-</div>
-</form>
-<br>
+        <div class="form-group">
+          <input type="password" class="form-control" formControlName="confirmPassword" placeholder="Confirm password"
+          [ngClass]="{ 'is-invalid': submitted && registerForm.controls.confirmPassword.errors,'is-valid': submitted && !registerForm.controls.confirmPassword.errors }">
+          <div class="invalid-feedback d-block">
+            <p *ngIf="submitted && registerForm.get('confirmPassword').hasError('required')">
+              La confirmation du mot de pass est obligatoire.
+            </p>
+            <p *ngIf="submitted && registerForm.get('confirmPassword').hasError('minLength')">
+              Le champ repetition mot de passe doit  comporte 6 caractères au moins.
+            </p></div>
+        </div>
 
+        <div class="text-center">
+          <button type="submit" class="btn btn-primary btn-block">Register</button>
 
-
-<div *ngIf="data!=null">
-  <h3>Submitted Date</h3>
-<p>First Name:{{data.firstname}}</p>
-<p>Last Name:{{data.lastname}}</p>
-<p>Email:{{data.email}}</p>
-<p>Phone:{{data.phone}}</p>
-<p>Password:{{data.password}}</p>
-</div>
-
-    </div>
-  </div>
-</div>  -->
- <table class="table tabe-hover table-striped table-bordered">
-  <thead class="table-dark">
-  <tr>
-    <th>Name</th>
-    <th>Age</th>
-    <th>Telephonne</th>
-    <th>email</th>
-  </tr>
-</thead>
-  <tbody>
-  <tr *ngFor="let user of users">
-    <td>{{user.name}}</td>
-    <td>{{user.age}}</td>
-    <td>{{user.phone}}</td>
-    <td>{{user.email}}</td>
-  </tr>
-</tbody>
-</table> 
-
-
-
-
+        </div>
+      </form>
+      <br>
 

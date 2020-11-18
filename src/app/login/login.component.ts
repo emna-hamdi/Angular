@@ -1,4 +1,8 @@
+import { AuthService } from './../services/auth.service';
+import { Validators, FormControl, FormGroup } from '@angular/forms';
+import { TasksService } from './../services/tasks.service';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -6,24 +10,32 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-
-  email:String;
-  password:String;
-  // users:Array<Number>=[];
-  // user={
-  //   name:"emna",
-  //   age:27
-  // }
-  url="https://img2.freepng.fr/20180512/stw/kisspng-bootstrap-responsive-web-design-web-development-lo-5af676c04b0535.2749534815261016963073.jpg";
-
-
-  constructor() { }
+  constructor(private authService: AuthService, private rooter: Router) { }
+  submitted = false;
+  loginForm;
 
   ngOnInit(): void {
+    this.loginForm = new FormGroup({
+
+      email: new FormControl('', [Validators.required, Validators.email]),
+      password: new FormControl('', [Validators.required, Validators.minLength(6)]),
+
+
+    }//,this.tasksService.passwordMatchValidator('password','confirmPassword')
+    );
   }
 
-register(){
-  console.log("button clecked");
-  
-}
+
+  onSubmit() {
+    this.submitted = true;
+    if (this.loginForm.invalid) {
+      return;
+    }
+
+    if (this.authService.loginUser(this.loginForm.value)) {
+      this.rooter.navigateByUrl("/dashbaord");
+    }
+  }
+
+
 }

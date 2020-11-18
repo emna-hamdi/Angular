@@ -1,3 +1,4 @@
+import { DashbaordComponent } from './dashbaord/dashbaord.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { Error404Component } from './error404/error404.component';
@@ -15,7 +16,7 @@ const routes: Routes = [
     path:'',
     redirectTo:'/login',
     pathMatch:'full'
-  
+
   },
   {
     path:'register',
@@ -42,11 +43,15 @@ const routes: Routes = [
     path:'tasks/update/:index',
     component:TaskUpdateComponent
   },
-  
+  {
+    path:'dashbaord',
+    component:DashbaordComponent
+  },
+
     {
     path:'error500',
     component:Error500Component
-  }, 
+  },
   {
    path:'**',
    component:Error404Component

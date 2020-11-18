@@ -11,10 +11,10 @@ export class UserAddComponent implements OnInit {
   lastname:String="";
 
   usersList:Array<Object>=[];
- 
+
 
   constructor() { }
-  
+
   ngOnInit(): void {
   }
 
@@ -45,7 +45,7 @@ export class UserAddComponent implements OnInit {
     this.firstname= user.firstname;
     this.lastname= user.lastname;
     console.log(index);
-    
+
   }
 
   deleteUser(index: any) {
