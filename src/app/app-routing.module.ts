@@ -1,3 +1,4 @@
+import { AuthGuardService } from './services/auth-guard.service';
 import { DashbaordComponent } from './dashbaord/dashbaord.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -9,8 +10,6 @@ import { TaskAddComponent } from './task-add/task-add.component';
 import { TaskListComponent } from './task-list/task-list.component';
 import { TaskUpdateComponent } from './task-update/task-update.component';
 import { UserAddComponent } from './user-add/user-add.component';
-import { UsersListComponent } from './users-list/users-list.component';
-
 const routes: Routes = [
   {
     path:'',
@@ -45,7 +44,8 @@ const routes: Routes = [
   },
   {
     path:'dashbaord',
-    component:DashbaordComponent
+    component:DashbaordComponent,
+    canActivate: [AuthGuardService]
   },
 
     {
