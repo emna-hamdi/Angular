@@ -46,23 +46,35 @@
           </p>
           <p *ngIf="submitted && registerForm.get('password').hasError('minLength')">
             Le champ mot de passe doit  comporte 6 caractères au moins.
-          </p></div>
+          </p>
+          <!-- <p *ngIf="{'is-invalid':submitted && registerForm.get('confirmPassword').value !=registerForm.get('password').value}">
+            Les mots de passe doivent etre identiques
+        </p> -->
+      </div>
         </div>
 
         <div class="form-group">
           <input type="password" class="form-control" formControlName="confirmPassword" placeholder="Confirm password"
-          [ngClass]="{ 'is-invalid': submitted && registerForm.controls.confirmPassword.errors,'is-valid': submitted && !registerForm.controls.confirmPassword.errors }">
+          [ngClass]="{ 'is-invalid': submitted && registerForm.controls.confirmPassword.errors && registerForm.get('confirmPassword').value !=registerForm.get('password').value,'is-valid': submitted && !registerForm.controls.confirmPassword.errors &&registerForm.get('confirmPassword').value ==registerForm.get('password').value }">
           <div class="invalid-feedback d-block">
             <p *ngIf="submitted && registerForm.get('confirmPassword').hasError('required')">
               La confirmation du mot de pass est obligatoire.
             </p>
             <p *ngIf="submitted && registerForm.get('confirmPassword').hasError('minLength')">
               Le champ repetition mot de passe doit  comporte 6 caractères au moins.
-            </p></div>
+            </p>
+            <p *ngIf="submitted && registerForm.get('confirmPassword').value !=registerForm.get('password').value">
+              Les mots de passe doivent etre identiques
+          </p>
+          </div>
+          <!-- <div *ngIf="{'is-invalid':submitted && registerForm.get('confirmPassword').value !=registerForm.get('password').value}">
+            Les mots de passe doivent etre identiques
+          </div> -->
+
         </div>
 
         <div class="text-center">
-          <button type="submit" class="btn btn-primary btn-block">Register</button>
+          <button [disabled]="registerForm.get('confirmPassword').value !=registerForm.get('password').value" type="submit" class="btn btn-primary btn-block">Register</button>
 
         </div>
       </form>

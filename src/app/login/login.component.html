@@ -1,14 +1,13 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <h2 class="text-center">Registration Form</h2>
 
-  <div class="container">
-    <div class="row">
-      <div class="col-md-6 offset-md-3">
-        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-          <h2 class="text-center">Registration Form</h2>
-
-          <div class="form-group">
-            <input type="email" class="form-control" formControlName="email" placeholder="email"
+        <div class="form-group">
+          <input type="email" class="form-control" formControlName="email" placeholder="email"
             [ngClass]="{ 'is-invalid': submitted && loginForm.controls.email.errors, 'is-valid': submitted && !loginForm.controls.email.errors }">
-            <div class="invalid-feedback d-block">
+          <div class="invalid-feedback d-block">
             <p *ngIf="submitted && loginForm.get('email').hasError('required')">
               Le champ email est obligatoire.
             </p>
@@ -16,33 +15,29 @@
               Le champ email n'est pas valid.
             </p>
           </div>
-          </div>
+        </div>
 
-          <div class="form-group">
-            <input type="password" class="form-control" formControlName="password" placeholder="Password"
+        <div class="form-group">
+          <input type="password" class="form-control" formControlName="password" placeholder="Password"
             [ngClass]="{ 'is-invalid': submitted && loginForm.controls.password.errors, 'is-valid': submitted && !loginForm.controls.password.errors }">
-            <div class="invalid-feedback d-block">
+          <div class="invalid-feedback d-block">
             <p *ngIf="submitted && loginForm.get('password').hasError('required')">
               Le champ mot de pass est obligatoire.
             </p>
             <p *ngIf="submitted && loginForm.get('password').hasError('minlength')">
               Le champ password n'est pas vali.
-            </p></div>
+            </p>
           </div>
+        </div>
 
 
 
-          <div class="text-center">
-            <button [disabled]="" type="submit" class="btn btn-primary btn-block">Login</button>
+        <div class="text-center">
+          <button type="submit" class="btn btn-primary btn-block">Login</button>
 
-          </div>
-        </form>
-        <br>
-
-
-
-
-
+        </div>
+      </form>
+      <br>
 
 
 
@@ -59,7 +54,12 @@
 
 
 
-<!-- <div class="col-md-5 justify-content-md-center">
+
+
+
+
+
+      <!-- <div class="col-md-5 justify-content-md-center">
 <form class="left">
     <div class="form-group ">
       <label for="exampleInputEmail1">Email address</label>
@@ -79,7 +79,7 @@
 
 
 
-  <!-- <p>{{email}}</p>
+      <!-- <p>{{email}}</p>
   <p>{{age}}</p>
   <p>{{user.name + "  "+ email}}</p>
 

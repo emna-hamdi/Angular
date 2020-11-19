@@ -1,10 +1,13 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
   constructor() { }
+
+
 
   registerUser(user) {
     const userItem: Array<any> = JSON.parse(localStorage.getItem("registerUsers")) || [];
