@@ -56,8 +56,6 @@ const routes: Routes = [
    path:'**',
    component:Error404Component
  }
-
-
 ];
 
 @NgModule({

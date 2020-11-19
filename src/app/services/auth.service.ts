@@ -1,9 +1,10 @@
+import { BehaviorSubject, Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-
+  isLoginSubject = new BehaviorSubject<boolean>(this.isAuthenticated());
   constructor() { }
 
   registerUser(user) {
@@ -19,6 +20,7 @@ export class AuthService {
       return false;
     } else {
       localStorage.setItem("token", "123");
+      this.isLoginSubject.next(true);
       return true;
      }
 
@@ -33,7 +35,11 @@ export class AuthService {
   }
 
   logout(){
-    localStorage.removeItem('token')
+    localStorage.removeItem('token');
+    this.isLoginSubject.next(false);
   }
 
+  isLoggedIn() : Observable<boolean> {
+    return this.isLoginSubject.asObservable();
+  }
 }

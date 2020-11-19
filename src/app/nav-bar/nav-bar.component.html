@@ -1,12 +1,19 @@
 <nav class="navbar ">
 
-  <div class="navbar-brand">
-    <a routerLink="dashbaord">Dashboard</a>
-  </div>
+
+    <a class="navbar-brand btn text-white" routerLink="dashbaord">Projet</a>
+    <a *ngIf="(isLoggedIn | async)" class="navbar-nav mr-auto"  routerLink="dashbaord">Dashboard</a>
+
   <form class="form-inline"  >
-      <a routerLink="register" class="btn btn-secondary">SignUp</a>
-      <a routerLink="login"  class="btn btn-secondary">SignIn</a>
-      <button (click)= "logout()" type="button" class="btn btn-danger" >LogOut</button>
+      <a *ngIf="!(isLoggedIn | async)" routerLink="register"class="btn btn-secondary">SignUp</a>
+      <a *ngIf="!(isLoggedIn | async)" routerLink="login" class="btn btn-secondary">SignIn</a>
+      <button  (click)= "logout()" *ngIf="(isLoggedIn | async)" type="button" class="btn btn-danger">LogOut</button>
   </form>
   </nav>
 
+  <!-- <li *ngIf="!(isLoggedIn | async)" (click)="authService.login()>
+    <a>Login</a>
+  </li>
+  <li *ngIf="(isLoggedIn | async)" (click)="authService.logout()">
+    <a>Logout</a>
+  </li> -->
